@@ -1,0 +1,10 @@
+<div class="container nnn">
+  <div class="card m-3" style="width: 18rem" *ngFor="let item of blogs">
+    <img [src]="item.imagePath" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h3 class="card-title text-primary">{{ item.user }}</h3>
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">{{ item.description }}</p>
+    </div>
+  </div>
+</div>

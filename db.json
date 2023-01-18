@@ -1,0 +1,18 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "user": "Valerii",
+      "title": "Title1",
+      "description": "some description",
+      "imagePath": "https://la.ua/wp-content/uploads/2021/08/1-1-1.jpg"
+    },
+    {
+      "id": 2,
+      "user": "Valerii2",
+      "title": "Title2",
+      "description": "some description2",
+      "imagePath": "https://la.ua/wp-content/uploads/2021/08/1-1-1.jpg"
+    }
+  ]
+}

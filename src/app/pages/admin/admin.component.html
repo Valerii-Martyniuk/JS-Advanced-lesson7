@@ -1,0 +1,125 @@
+<div class="container contefle mt-3">
+  <ul class="nav flex-column cnopca me-3">
+    <li class="nav-item blogs-show">
+      <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+    </li>
+  </ul>
+
+  <!-- /////// -->
+
+  <div class="row f123">
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input
+          placeholder="title here..."
+          class="form-control"
+          type="text"
+          [(ngModel)]="newTitle"
+          name="newTitle"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Text</label>
+        <textarea
+          placeholder="text here..."
+          class="form-control"
+          rows="3"
+          [(ngModel)]="newText"
+          name="newText"
+        ></textarea>
+      </div>
+
+      <div class="mb-3" *ngIf="requestID === 0">
+        <label class="form-label">Author</label>
+        <input
+          placeholder="author here..."
+          class="form-control"
+          type="text"
+          [(ngModel)]="newAuthor"
+          name="newAuthor"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"
+          >Image Path
+          <span *ngIf="requestID === 0">(not necessary)</span></label
+        >
+        <input
+          placeholder="https://la.ua..."
+          class="form-control"
+          type="text"
+          [(ngModel)]="newImage"
+          name="newImage"
+        />
+      </div>
+
+      <button
+        *ngIf="requestID === 0"
+        [disabled]="newTitle === '' || newText === '' || newAuthor === ''"
+        (click)="addBlog()"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+      <button
+        *ngIf="requestID != 0"
+        (click)="editBlogNext()"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Edit
+      </button>
+    </form>
+    <!-- ////// -->
+    <table class="table w-100">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Author</th>
+          <th scope="col">Title</th>
+          <th scope="col">Text</th>
+          <th scope="col">Img Path</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of blogs; index as i">
+          <th scope="row">{{ i }}</th>
+          <td>{{ item.user }}</td>
+          <td>{{ item.title }}</td>
+          <td>
+            {{ item.description | slice : 0 : 20 }}
+            <span *ngIf="item.imagePath.length > 21">...</span>
+          </td>
+          <td>
+            {{ item.imagePath | slice : 0 : 20 }}
+            <span *ngIf="item.imagePath.length > 21">...</span>
+          </td>
+          <td>
+            <button
+              (click)="deleteBlog(item.id)"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Delete
+            </button>
+          </td>
+          <td>
+            <button
+              (click)="editBlog(item)"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
